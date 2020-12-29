@@ -15,6 +15,7 @@ class RobotLight(threading.Thread):
         self.LED_DMA = 10
         self.LED_BRIGHTNESS = 255
         self.LED_INVERT = False
+        self.LED_CHANNEL = 0
         # DMA channel to use for generating signal (try 10) # Set to 0 for darkest and 255 for brightest
         '''Set the brightness of the three RGB color channels, no need to change here, these
         values will be automatically set after the subsequent call of the breathing light function '''
@@ -32,10 +33,7 @@ class RobotLight(threading.Thread):
         self.strip = Adafruit_NeoPixel(self.LED_COUNT, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL)
         # Intialize the library (must be called once before other functions).
         self.strip.begin() 
-        # True to invert the signal (when using NPN transistor
-        self.LED_CHANNEL = 0 # set to '1' for GPIOs 13, 19, 41, 45 or 53
-
-
+        
         super(RobotLight, self).__init__(*args, **kwargs)
         self.__flag = threading.Event()
         self.__flag.clear()
