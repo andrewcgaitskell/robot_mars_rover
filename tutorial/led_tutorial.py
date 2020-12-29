@@ -34,5 +34,5 @@ if __name__ == '__main__':
       time.sleep(1)
       LED.colorWipe(0, 0, 255) # All lights turn blue
       time.sleep(1)
-    except:
-      LED.colorWipe(Color(0,0,0)) # Turn off all lights
+  except:
+    LED.colorWipe(Color(0,0,0)) # Turn off all lights
