@@ -40,14 +40,13 @@ class RobotLight(threading.Thread):
         self.__flag.clear()
 
     # Define functions which animate LEDs in various ways.
-    def setColor(self, R, G, B): '''Set the color of all lights'''
+    def setColor(self, R, G, B): 
         color = Color(int(R),int(G),int(B))
         for i in range(self.strip.numPixels()):
             self.strip.setPixelColor(i, color)
             self.strip.show()
 
-    def setSomeColor(self, R, G, B, ID): '''
-        Set the color of some lamps, the ID is the array of the serial number of this lamp '''
+    def setSomeColor(self, R, G, B, ID):
         color = Color(int(R),int(G),int(B))
         #print(int(R),' ',int(G),' ',int(B))
         for i in ID:
