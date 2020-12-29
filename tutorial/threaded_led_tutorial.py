@@ -28,7 +28,7 @@ class RobotLight(threading.Thread):
         change;
         'police' is a police light mode, red and blue flash alternately; 'breath' breathing light, you can set the specified color.
         '''
-        self.lightMode = 'none' #'none' 'police' 'breath'
+        self.lightMode = 'police' #'none' 'police' 'breath'
         # Create NeoPixel object with appropriate configuration.
         self.strip = Adafruit_NeoPixel(self.LED_COUNT, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL)
         # Intialize the library (must be called once before other functions).
