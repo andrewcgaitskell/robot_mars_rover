@@ -87,7 +87,8 @@ class RobotLight(threading.Thread):
         self.lightMode = 'breath'
         self.colorBreathR = R_input
         self.colorBreathG = G_input 
-        self.colorBreathB = B_input self.resume()
+        self.colorBreathB = B_input
+        self.resume()
         
     def breathProcessing(self):
         while self.lightMode == 'breath':
