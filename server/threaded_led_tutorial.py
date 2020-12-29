@@ -11,12 +11,17 @@ class RobotLight(threading.Thread):
         self.LED_COUNT = 16 # Number of LED pixels.
         self.LED_PIN = 12 # GPIO pin connected to the pixels (18 uses PWM!). self.LED_FREQ_HZ = 800000 # LED signal frequency in hertz (usually 800khz)
           level shift)
-        self.LED_DMA = 10 self.LED_BRIGHTNESS = 255 self.LED_INVERT = False
+        self.LED_DMA = 10
+        self.LED_BRIGHTNESS = 255
+        self.LED_INVERT = False
         # DMA channel to use for generating signal (try 10) # Set to 0 for darkest and 255 for brightest
         '''
         Set the brightness of the three RGB color channels, no need to change here, these
         values will be automatically set after the subsequent call of the breathing light function '''
-        self.colorBreathR = 0 self.colorBreathG = 0 self.colorBreathB = 0 self.breathSteps = 10
+        self.colorBreathR = 0
+        self.colorBreathG = 0
+        self.colorBreathB = 0
+        self.breathSteps = 10
         '''
         The mode variable, 'none' will make the thread block and hang, the light will not
         change;
@@ -77,10 +82,12 @@ class RobotLight(threading.Thread):
             break
         time.sleep(0.1)
         '''Red flashes 3 times '''
-        for i in range(0,3): self.setSomeColor(255,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
+        for i in range(0,3):
+            self.setSomeColor(255,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
             time.sleep(0.05) self.setSomeColor(0,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
             time.sleep(0.05)
         time.sleep(0.1)
+        
     def breath(self, R_input, G_input, B_input):
         '''Call this function to turn on the breathing light mode, you need to enter three parameters,
         namely the brightness of the RGB three color channels, as the color when the brightness of the
@@ -89,6 +96,7 @@ class RobotLight(threading.Thread):
         self.colorBreathR = R_input
         self.colorBreathG = G_input 
         self.colorBreathB = B_input self.resume()
+        
     def breathProcessing(self): '''Specific realization method of breathing lamp '''
         while self.lightMode == 'breath': '''All lights gradually brighten '''
         for i in range(0,self.breathSteps):
@@ -105,9 +113,12 @@ class RobotLight(threading.Thread):
         time.sleep(0.03)
     
     def lightChange(self): '''This function is used to select the task to perform '''
-        if self.lightMode == 'none': self.pause()
-        elif self.lightMode == 'police': self.policeProcessing()
-        elif self.lightMode == 'breath': self.breathProcessing()
+        if self.lightMode == 'none':
+            self.pause()
+        elif self.lightMode == 'police':
+            self.policeProcessing()
+        elif self.lightMode == 'breath':
+            self.breathProcessing()
  
   def run(self): '''Functions for multi-threaded tasks '''
     while 1:
@@ -117,8 +128,7 @@ class RobotLight(threading.Thread):
 
 if __name__ == '__main__':
     RL=RobotLight() # Instantiate the object that controls the LED light RL.start() # Start thread
-    '''
-    Start breathing light mode and stop after 15 seconds '''
+    '''Start breathing light mode and stop after 15 seconds '''
     RL.breath(70,70,255)
     time.sleep(15)
     RL.pause()
