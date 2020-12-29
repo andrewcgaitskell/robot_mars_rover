@@ -112,11 +112,11 @@ class RobotLight(threading.Thread):
         elif self.lightMode == 'breath':
             self.breathProcessing()
  
-  def run(self):
-    while 1:
-        self.__flag.wait()
-        self.lightChange()
-        pass
+    def run(self):
+        while 1:
+            self.__flag.wait()
+            self.lightChange()
+            pass
 
 if __name__ == '__main__':
     RL=RobotLight() # Instantiate the object that controls the LED light RL.start()
