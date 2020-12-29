@@ -1,6 +1,7 @@
 import time
 import sys
-from rpi_ws281x import * import threading
+from rpi_ws281x import *
+import threading
 
 '''
 Use the Threading module to create threads, inherit directly from threading.Thread, and then override the __init__ method and the run method
