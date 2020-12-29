@@ -10,14 +10,13 @@ class RobotLight(threading.Thread):
     def __init__(self, *args, **kwargs):
         '''Here initialize some settings about LED lights '''
         self.LED_COUNT = 16 # Number of LED pixels.
-        self.LED_PIN = 12 # GPIO pin connected to the pixels (18 uses PWM!). self.LED_FREQ_HZ = 800000 # LED signal frequency in hertz (usually 800khz)
-          level shift)
+        self.LED_PIN = 12
+        # GPIO pin connected to the pixels (18 uses PWM!). self.LED_FREQ_HZ = 800000 # LED signal frequency in hertz (usually 800khz) level shift)
         self.LED_DMA = 10
         self.LED_BRIGHTNESS = 255
         self.LED_INVERT = False
         # DMA channel to use for generating signal (try 10) # Set to 0 for darkest and 255 for brightest
-        '''
-        Set the brightness of the three RGB color channels, no need to change here, these
+        '''Set the brightness of the three RGB color channels, no need to change here, these
         values will be automatically set after the subsequent call of the breathing light function '''
         self.colorBreathR = 0
         self.colorBreathG = 0
@@ -30,9 +29,7 @@ class RobotLight(threading.Thread):
         '''
         self.lightMode = 'none' #'none' 'police' 'breath'
         # Create NeoPixel object with appropriate configuration.
-        self.strip = Adafruit_NeoPixel(self.LED_COUNT, self.LED_PIN, self.LED_FREQ_HZ,
-        self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS,
-        self.LED_CHANNEL)
+        self.strip = Adafruit_NeoPixel(self.LED_COUNT, self.LED_PIN, self.LED_FREQ_HZ, self.LED_DMA, self.LED_INVERT, self.LED_BRIGHTNESS, self.LED_CHANNEL)
         # Intialize the library (must be called once before other functions).
         self.strip.begin() 
         # True to invert the signal (when using NPN transistor self.LED_CHANNEL = 0 # set to '1' for GPIOs 13, 19, 41, 45 or 53
@@ -43,9 +40,7 @@ class RobotLight(threading.Thread):
         self.__flag.clear()
 
     # Define functions which animate LEDs in various ways.
-    def setColor(self, R, G, B): '''
-        Set the color of all lights
-        '''
+    def setColor(self, R, G, B): '''Set the color of all lights'''
         color = Color(int(R),int(G),int(B))
         for i in range(self.strip.numPixels()):
             self.strip.setPixelColor(i, color)
