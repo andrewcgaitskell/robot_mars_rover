@@ -23,13 +23,13 @@ def run():
   status_middle = GPIO.input(line_pin_middle)
   status_left = GPIO.input(line_pin_left)
   # Detect if the line hunting module senses the line
-  if status_middle == 1: '''Control the robot forward '''
+  if status_middle == 1:
     print('forward')
-  elif status_left == 1: '''Control the robot to turn left '''
+  elif status_left == 1:
     print('left')
-  elif status_right == 1: '''Control the robot to turn right '''
+  elif status_right == 1:
     print('right')
-  else: '''If the line is not detected, the robot stops, you can also make the robot go backwards '''
+  else:
     print('stop')
 
 if __name__ == '__main__':
