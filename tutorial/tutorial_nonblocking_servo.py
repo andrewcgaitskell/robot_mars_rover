@@ -6,5 +6,5 @@ sc = RPIservo.ServoCtrl() # Instantiate the object that controls the steering ge
 sc.start() # Start this thread, when the servo does not move, the thread is suspended
 
 while 1:
-  sc.singleServo(3, -1, 2)
+  sc.singleServo(2, -1, 2)
   time.sleep(1)
