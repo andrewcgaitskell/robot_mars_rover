@@ -53,21 +53,19 @@ class RobotLight(threading.Thread):
             self.strip.setPixelColor(i, color)
             self.strip.show()
 
-    def pause(self): '''Call this function, set __flag to False, block the thread '''
+    def pause(self):
         self.lightMode = 'none' self.setColor(0,0,0)
         self.__flag.clear()
     
-    def resume(self): '''Call this function, set __flag to True to start the thread '''
+    def resume(self):
         self.__flag.set()
         
     def police(self):
-
-        '''Call this function to turn on the police light mode '''
         self.lightMode = 'police'
         self.resume()
 
-    def policeProcessing(self): '''The specific realization of the police light mode '''
-        while self.lightMode == 'police': '''Blue flashes 3 times '''
+    def policeProcessing(self):
+        while self.lightMode == 'police':
         for i in range(0,3):
             self.setSomeColor(0,0,255,[0,1,2,3,4,5,6,7,8,9,10,11])
             time.sleep(0.05)
@@ -84,16 +82,13 @@ class RobotLight(threading.Thread):
         time.sleep(0.1)
         
     def breath(self, R_input, G_input, B_input):
-        '''Call this function to turn on the breathing light mode, you need to enter three parameters,
-        namely the brightness of the RGB three color channels, as the color when the brightness of the
-        breathing lamp is maximum'''
         self.lightMode = 'breath'
         self.colorBreathR = R_input
         self.colorBreathG = G_input 
         self.colorBreathB = B_input self.resume()
         
-    def breathProcessing(self): '''Specific realization method of breathing lamp '''
-        while self.lightMode == 'breath': '''All lights gradually brighten '''
+    def breathProcessing(self):
+        while self.lightMode == 'breath':
         for i in range(0,self.breathSteps):
             if self.lightMode != 'breath':
                 break
@@ -107,7 +102,7 @@ class RobotLight(threading.Thread):
         self.setColor(self.colorBreathR-(self.colorBreathR*i/self.breathSteps), self.colorBreathG-(self.colorBreathG*i/self.breathSteps), self.colorBreathB-(self.colorBreathB*i/self.breathSteps))
         time.sleep(0.03)
     
-    def lightChange(self): '''This function is used to select the task to perform '''
+    def lightChange(self):
         if self.lightMode == 'none':
             self.pause()
         elif self.lightMode == 'police':
@@ -115,23 +110,21 @@ class RobotLight(threading.Thread):
         elif self.lightMode == 'breath':
             self.breathProcessing()
  
-  def run(self): '''Functions for multi-threaded tasks '''
+  def run(self):
     while 1:
         self.__flag.wait()
         self.lightChange()
         pass
 
 if __name__ == '__main__':
-    RL=RobotLight() # Instantiate the object that controls the LED light RL.start() # Start thread
-    '''Start breathing light mode and stop after 15 seconds '''
+    RL=RobotLight() # Instantiate the object that controls the LED light RL.start()
+    # Start thread
     RL.breath(70,70,255)
     time.sleep(15)
     RL.pause()
-    '''
-    Pause for 2 seconds '''
+    '''Pause for 2 seconds '''
     time.sleep(2)
-    '''
-    Start the police light mode and stop after 15 seconds '''
+    '''Start the police light mode and stop after 15 seconds '''
     RL.police()
     time.sleep(15)
     RL.pause()
