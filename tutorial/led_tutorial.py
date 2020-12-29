@@ -1,7 +1,6 @@
 import time
 from rpi_ws281x import *
 
-
 class LED:
   def __init__(self):
     self.LED_COUNT = 16 # Set to the total number of LED lights on the robot product.There are more LED lights on the Pi
@@ -24,3 +23,16 @@ class LED:
     for i in range(self.strip.numPixels()): # Only one LED light color can be set at a time, so we need to do a loop
       self.strip.setPixelColor(i, color)
       self.strip.show() # The color will only change after calling the show method
+
+if __name__ == '__main__':
+  LED = LED()
+  try:
+    while 1:
+      LED.colorWipe(255, 0, 0) # All the lights turn red
+      time.sleep(1)
+      LED.colorWipe(0, 255, 0) # All lights turn green 
+      time.sleep(1)
+      LED.colorWipe(0, 0, 255) # All lights turn blue
+      time.sleep(1)
+    except:
+      LED.colorWipe(Color(0,0,0)) # Turn off all lights
