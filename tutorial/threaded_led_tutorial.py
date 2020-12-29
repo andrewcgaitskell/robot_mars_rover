@@ -78,7 +78,8 @@ class RobotLight(threading.Thread):
         '''Red flashes 3 times '''
         for i in range(0,3):
             self.setSomeColor(255,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
-            time.sleep(0.05) self.setSomeColor(0,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
+            time.sleep(0.05)
+            self.setSomeColor(0,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
             time.sleep(0.05)
         time.sleep(0.1)
         
