@@ -13,10 +13,6 @@ This definition is different for different Raspberry Pi driver boards.
 '''
 
 Motor_A_EN = 4
-sc.stopWiggle()
-sc.singleServo(3, 1, 2)
-time.sleep(1)
-sc.stopWiggle()
 Motor_A_Pin1 = 14
 Motor_A_Pin2 = 15
 
@@ -26,7 +22,7 @@ def motorStop():
   GPIO.output(Motor_A_EN, GPIO.LOW)
 
 def setup(): # GPIO initialization, GPIO motor cannot be controlled without initialization
-  global pwm_A, pwm_B
+  global pwm_A
   GPIO.setwarnings(False)
   GPIO.setmode(GPIO.BCM)
   GPIO.setup(Motor_A_EN, GPIO.OUT)
