@@ -72,16 +72,16 @@ class RobotLight(threading.Thread):
                 time.sleep(0.05)
                 self.setSomeColor(0,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
                 time.sleep(0.05)
-        if self.lightMode != 'police':
-            break
-        time.sleep(0.1)
-        '''Red flashes 3 times '''
-        for i in range(0,3):
-            self.setSomeColor(255,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
-            time.sleep(0.05)
-            self.setSomeColor(0,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
-            time.sleep(0.05)
-        time.sleep(0.1)
+            if self.lightMode != 'police':
+                break
+            time.sleep(0.1)
+            '''Red flashes 3 times '''
+            for i in range(0,3):
+                self.setSomeColor(255,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
+                time.sleep(0.05)
+                self.setSomeColor(0,0,0,[0,1,2,3,4,5,6,7,8,9,10,11])
+                time.sleep(0.05)
+            time.sleep(0.1)
         
     def breath(self, R_input, G_input, B_input):
         self.lightMode = 'breath'
