@@ -1,4 +1,4 @@
-importAdafruit_PCA9685 #Import the library used to communicate with PCA9685
+import Adafruit_PCA9685 #Import the library used to communicate with PCA9685
 import time
 pwm = Adafruit_PCA9685.PCA9685() # Instantiate the object used to control the PWM
 pwm.set_pwm_freq(50) # Set the frequency of the PWM signal
