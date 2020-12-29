@@ -15,10 +15,10 @@ def setup():
   GPIO.setup(line_pin_left,GPIO.IN)
 
 def run():
-'''
-Read the values of three infrared sensor phototransistors (0 is no line detected, 1 is line detected)
-This routine takes the black line on white as an example
-'''
+  '''
+  Read the values of three infrared sensor phototransistors (0 is no line detected, 1 is line detected)
+  This routine takes the black line on white as an example
+  '''
   status_right = GPIO.input(line_pin_right)
   status_middle = GPIO.input(line_pin_middle)
   status_left = GPIO.input(line_pin_left)
@@ -29,8 +29,7 @@ This routine takes the black line on white as an example
     print('left')
   elif status_right == 1: '''Control the robot to turn right '''
     print('right')
-  else:
-  '''If the line is not detected, the robot stops, you can also make the robot go backwards '''
+  else: '''If the line is not detected, the robot stops, you can also make the robot go backwards '''
     print('stop')
 
 if __name__ == '__main__':
