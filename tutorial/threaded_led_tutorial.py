@@ -92,17 +92,17 @@ class RobotLight(threading.Thread):
         
     def breathProcessing(self):
         while self.lightMode == 'breath':
-        for i in range(0,self.breathSteps):
-            if self.lightMode != 'breath':
-                break
-        self.setColor(self.colorBreathR*i/self.breathSteps, self.colorBreathG*i/self.breathSteps, self.colorBreathB*i/self.breathSteps)
-        time.sleep(0.03)
+            for i in range(0,self.breathSteps):
+                if self.lightMode != 'breath':
+                    break
+                self.setColor(self.colorBreathR*i/self.breathSteps, self.colorBreathG*i/self.breathSteps, self.colorBreathB*i/self.breathSteps)
+                time.sleep(0.03)
         '''All lights are getting darker '''
         for i in range(0,self.breathSteps):
             if self.lightMode != 'breath':
                 break
-        self.setColor(self.colorBreathR-(self.colorBreathR*i/self.breathSteps), self.colorBreathG-(self.colorBreathG*i/self.breathSteps), self.colorBreathB-(self.colorBreathB*i/self.breathSteps))
-        time.sleep(0.03)
+            self.setColor(self.colorBreathR-(self.colorBreathR*i/self.breathSteps), self.colorBreathG-(self.colorBreathG*i/self.breathSteps), self.colorBreathB-(self.colorBreathB*i/self.breathSteps))
+            time.sleep(0.03)
     
     def lightChange(self):
         if self.lightMode == 'none':
