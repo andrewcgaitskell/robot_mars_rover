@@ -10,8 +10,8 @@ class RobotLight(threading.Thread):
     def __init__(self, *args, **kwargs):
         '''Here initialize some settings about LED lights '''
         self.LED_COUNT = 16 # Number of LED pixels.
-        self.LED_PIN = 12
-        # GPIO pin connected to the pixels (18 uses PWM!). self.LED_FREQ_HZ = 800000 # LED signal frequency in hertz (usually 800khz) level shift)
+        self.LED_PIN = 12 # GPIO pin connected to the pixels (18 uses PWM!).
+        self.LED_FREQ_HZ = 800000 # LED signal frequency in hertz (usually 800khz) level shift)
         self.LED_DMA = 10
         self.LED_BRIGHTNESS = 255
         self.LED_INVERT = False
