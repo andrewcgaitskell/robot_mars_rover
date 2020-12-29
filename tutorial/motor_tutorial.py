@@ -16,6 +16,9 @@ Motor_A_EN = 4
 Motor_A_Pin1 = 14
 Motor_A_Pin2 = 15
 
+#GPIO.setup(Motor_A_Pin1, GPIO.OUT)
+#GPIO.setup(Motor_A_Pin2, GPIO.OUT)
+
 def motorStop():
   GPIO.output(Motor_A_Pin1, GPIO.LOW)
   GPIO.output(Motor_A_Pin2, GPIO.LOW)
@@ -47,7 +50,9 @@ def motor_A(direction, speed): # The function used to control the motor of port 
     GPIO.output(Motor_A_Pin2, GPIO.HIGH)
     pwm_A.start(100)
     pwm_A.ChangeDutyCycle(speed)
-    
+
+setup()
+
 # Control A and B motors to rotate at full speed for 3 seconds
 motor_A(1, 100)
 time.sleep(3)
