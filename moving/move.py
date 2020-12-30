@@ -5,9 +5,9 @@ pwm = Adafruit_PCA9685.PCA9685() # Instantiate the object used to control the PW
 
 pwm.set_pwm_freq(50) # Set the frequency of the PWM signal
 
-pwm.set_pwm(0, 0, 0)
-pwm.set_pwm(1, 0, 0)
-pwm.set_pwm(2, 0, 0)
+pwm.set_pwm(0, 0, 200)
+pwm.set_pwm(1, 0, 200)
+pwm.set_pwm(2, 0, 200)
 
 
 '''
