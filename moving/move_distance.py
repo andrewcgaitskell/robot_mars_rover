@@ -52,7 +52,7 @@ setup()
 
 # Control motor to rotate at full speed for 0.5 seconds
 motor(1, 100)
-time.sleep(0.1)
+time.sleep(0.2)
 
 # Control motor to rotate in opposite directions at full speed for 0.5 seconds
 
