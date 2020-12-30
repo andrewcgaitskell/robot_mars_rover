@@ -50,15 +50,33 @@ def motor(direction, speed): # The function used to control the motor
 
 setup()
 
-# Control motor to rotate at full speed for 0.5 seconds
-motor(1, 100)
-time.sleep(0.2)
+def move10cm_fwd():
+  # Control motor to rotate at full speed for 0.5 seconds
+  motor(1, 100)
+  time.sleep(0.2)
 
-# Control motor to rotate in opposite directions at full speed for 0.5 seconds
+  # Control motor to rotate in opposite directions at full speed for 0.5 seconds
 
-motor(-1, 50)
-time.sleep(0.1)
+  motor(-1, 50)
+  time.sleep(0.1)
 
-# Stop the motor
+  # Stop the motor
 
-motorStop()
+  motorStop()
+
+  
+def move5cm_fwd():
+  # Control motor to rotate at full speed for 0.5 seconds
+  motor(1, 100)
+  time.sleep(0.1)
+
+  # Control motor to rotate in opposite directions at full speed for 0.5 seconds
+
+  motor(-1, 50)
+  time.sleep(0.1)
+
+  # Stop the motor
+
+  motorStop()
+
+move10cm_fwd()
