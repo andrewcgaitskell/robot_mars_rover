@@ -12,9 +12,9 @@ The following code defines the GPIO used to control the L298N chip.
 This definition is different for different Raspberry Pi driver boards.
 '''
 
-Motor_EN = 4
-Motor_Pin1 = 14
-Motor_Pin2 = 15
+Motor_EN = 17
+Motor_Pin1 = 27
+Motor_Pin2 = 18
 
 def motorStop():
   GPIO.output(Motor_Pin1, GPIO.LOW)
