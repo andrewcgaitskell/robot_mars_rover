@@ -5,9 +5,21 @@ pwm = Adafruit_PCA9685.PCA9685() # Instantiate the object used to control the PW
 
 pwm.set_pwm_freq(50) # Set the frequency of the PWM signal
 
-pwm.set_pwm(0, 0, 200)
-pwm.set_pwm(1, 0, 200)
-pwm.set_pwm(2, 0, 200)
+#servo1 - port 0 - camera tilt
+#servo2 - port 1 - camera rotate
+#servo3 - port 2 - steering
+
+'''
+According to the different servos, this value represents different servo angles.
+The PWM duty cycle range of the servos we use is approximately 100 to 560, which corresponds to a rotation range of approximately 0 ° to 180 °.
+'''
+servo1_zero = 100 + (460/2)
+servo2_zero = 100 + (460/2)
+servo3_zero = 100 + (460/2)
+
+pwm.set_pwm(0, 0, servo1_zero)
+pwm.set_pwm(1, 0, servo2_zero)
+pwm.set_pwm(2, 0, servo3_zero)
 
 
 '''
