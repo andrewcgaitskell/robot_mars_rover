@@ -12,56 +12,53 @@ The following code defines the GPIO used to control the L298N chip.
 This definition is different for different Raspberry Pi driver boards.
 '''
 
-Motor_A_EN = 4
-Motor_A_Pin1 = 14
-Motor_A_Pin2 = 15
-
-#GPIO.setup(Motor_A_Pin1, GPIO.OUT)
-#GPIO.setup(Motor_A_Pin2, GPIO.OUT)
+Motor_EN = 4
+Motor_Pin1 = 14
+Motor_Pin2 = 15
 
 def motorStop():
-  GPIO.output(Motor_A_Pin1, GPIO.LOW)
-  GPIO.output(Motor_A_Pin2, GPIO.LOW)
-  GPIO.output(Motor_A_EN, GPIO.LOW)
+  GPIO.output(Motor_Pin1, GPIO.LOW)
+  GPIO.output(Motor_Pin2, GPIO.LOW)
+  GPIO.output(Motor_EN, GPIO.LOW)
 
 def setup(): # GPIO initialization, GPIO motor cannot be controlled without initialization
-  global pwm_A
+  global pwm
   GPIO.setwarnings(False)
   GPIO.setmode(GPIO.BCM)
-  GPIO.setup(Motor_A_EN, GPIO.OUT)
-  GPIO.setup(Motor_A_Pin1, GPIO.OUT)
-  GPIO.setup(Motor_A_Pin2, GPIO.OUT)
+  GPIO.setup(Motor_EN, GPIO.OUT)
+  GPIO.setup(Motor_Pin1, GPIO.OUT)
+  GPIO.setup(Motor_Pin2, GPIO.OUT)
   
   motorStop() # Avoid motor starting to rotate automatically after initialization
   try: # Try is used here to avoid errors due to repeated PWM settings
-    pwm_A = GPIO.PWM(Motor_A_EN, 1000)
+    pwm = GPIO.PWM(Motor_EN, 1000)
   except:
     pass
 
-def motor_A(direction, speed): # The function used to control the motor of port A
+def motor(direction, speed): # The function used to control the motor
   if direction == 1:
-    GPIO.output(Motor_A_Pin1, GPIO.HIGH)
-    GPIO.output(Motor_A_Pin2, GPIO.LOW)
-    pwm_A.start(100)
-    pwm_A.ChangeDutyCycle(speed)
+    GPIO.output(Motor_Pin1, GPIO.HIGH)
+    GPIO.output(Motor_Pin2, GPIO.LOW)
+    pwm.start(100)
+    pwm.ChangeDutyCycle(speed)
 
   if direction == -1:
-    GPIO.output(Motor_A_Pin1, GPIO.LOW)
-    GPIO.output(Motor_A_Pin2, GPIO.HIGH)
-    pwm_A.start(100)
-    pwm_A.ChangeDutyCycle(speed)
+    GPIO.output(Motor_Pin1, GPIO.LOW)
+    GPIO.output(Motor_Pin2, GPIO.HIGH)
+    pwm.start(100)
+    pwm.ChangeDutyCycle(speed)
 
 setup()
 
-# Control A and B motors to rotate at full speed for 3 seconds
-motor_A(1, 100)
-time.sleep(3)
+# Control motor to rotate at full speed for 0.5 seconds
+motor(1, 50)
+time.sleep(0.5)
 
-# Control A and B motors to rotate in opposite directions at full speed for 3 seconds
+# Control motor to rotate in opposite directions at full speed for 0.5 seconds
 
-motor_A(-1, 100)
-time.sleep(3)
+motor(-1, 50)
+time.sleep(0.5)
 
-# Stop the motor rotation of A port
+# Stop the motor
 
 motorStop()
