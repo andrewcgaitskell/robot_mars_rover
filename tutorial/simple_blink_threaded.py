@@ -263,11 +263,15 @@ class RobotLight(threading.Thread):
 
 
 if __name__ == '__main__':
-	RL=RobotLight()
-	RL.start()
-	RL.breath(70,70,255)
+	RL1=RobotLight()
+	RL2=RobotLight()
+	RL1.start()
+	RL2.start()
+	RL1.breath(70,70,255)
+	RL2.police()
 	time.sleep(15)
-	RL.pause()
+	RL1.pause()
+	RL2.pause()
 	#RL.frontLight('off')
 	#time.sleep(2)
 	#RL.police()
