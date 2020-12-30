@@ -13,7 +13,7 @@ pwm.set_pwm_freq(50) # Set the frequency of the PWM signal
 According to the different servos, this value represents different servo angles.
 The PWM duty cycle range of the servos we use is approximately 100 to 560, which corresponds to a rotation range of approximately 0 ° to 180 °.
 '''
-servo1_zero = 330-30 #100 + (460/2)
+servo1_zero = 330-50 #100 + (460/2)
 servo2_zero = 330-20 #100 + (460/2) trimmed
 servo3_zero = 330-10 #100 + (460/2) trimmed
 
