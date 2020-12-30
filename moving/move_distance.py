@@ -36,13 +36,13 @@ def setup(): # GPIO initialization, GPIO motor cannot be controlled without init
     pass
 
 def motor(direction, speed): # The function used to control the motor
-  if direction == 1:
+  if direction == -1:
     GPIO.output(Motor_Pin1, GPIO.HIGH)
     GPIO.output(Motor_Pin2, GPIO.LOW)
     pwm.start(100)
     pwm.ChangeDutyCycle(speed)
 
-  if direction == -1:
+  if direction == 1:
     GPIO.output(Motor_Pin1, GPIO.LOW)
     GPIO.output(Motor_Pin2, GPIO.HIGH)
     pwm.start(100)
