@@ -12,6 +12,8 @@ import zero_servos as z
 pwm_steering = Adafruit_PCA9685.PCA9685() # Instantiate the object used to control the PWM
 pwm_steering.set_pwm_freq(50) # Set the frequency of the PWM signal
 
+global z1,z2,z3
+
 z1,z2,z3 = z.zero_all()
 
 # There are three encoding methods for the GPIO port of the Raspberry Pi,
@@ -60,37 +62,25 @@ def motor(direction, speed): # The function used to control the motor
 
 setup()
 
-def circle_fwd(time_in,speed_in,angle_in):
+def circle(time_in,speed_in,angle_in,direction_in):
   # Control motor to rotate at full speed for 0.5 seconds
-  pwm_steering.set_pwm(2, 0, angle_in)
-  motor(1, speed_in)
+  pwm_steering.set_pwm(2, 0, z2+angle_in)
+  motor(direction_in, speed_in)
   time.sleep(time_in)
 
   # Control motor to rotate in opposite directions at full speed for 0.5 seconds
 
-  motor(-1, 50)
+  motor(-direction_in, 50)
   time.sleep(0.075)
 
   # Stop the motor
   motorStop()
 
-def circle_back(time_in,speed_in,angle_in):
-  pwm_steering.set_pwm(2, 0, angle_in)
-  motor(-1, speed_in)
-  time.sleep(time_in)
-
-  # Control motor to rotate in opposite directions at full speed for 0.5 seconds
-
-  motor(1, 50)
-  time.sleep(0.075)
-
-  # Stop the motor
-  motorStop()  
 
 time.sleep(15)
 
 while 1:
-  circle_fwd(5,90,390)
-  circle_back(4,90,390)
+  circle(5,90,70,1)
+  circle(4.2,90,70,-1)
   time.sleep(10)
   
