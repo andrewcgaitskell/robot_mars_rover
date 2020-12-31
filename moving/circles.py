@@ -75,5 +75,5 @@ def circle_fwd(time_in,speed_in,angle_in):
   motorStop()
 
 while 1:
-  circle_fwd(10,90,400)
+  circle_fwd(10,90,390)
   
