@@ -77,6 +77,6 @@ def move5cm_fwd():
 
   # Stop the motor
 
-  motorStop()
+  #motorStop()
 
 move5cm_fwd()
