@@ -91,6 +91,6 @@ time.sleep(15)
 
 while 1:
   circle_fwd(10,90,390)
-  circle_back(10,100,390)
+  circle_back(10,90,390)
   time.sleep(10)
   
