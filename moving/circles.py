@@ -90,7 +90,7 @@ def circle_back(time_in,speed_in,angle_in):
 time.sleep(15)
 
 while 1:
-  circle_fwd(10,90,390)
-  circle_back(10,90,390)
+  circle_fwd(5,90,390)
+  circle_back(4,90,390)
   time.sleep(10)
   
