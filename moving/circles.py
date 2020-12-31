@@ -74,5 +74,5 @@ def circle_fwd(speed,angle):
   # Stop the motor
   motorStop()
 
-circle_fwd(30,330)
+circle_fwd(50,330)
   
