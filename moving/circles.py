@@ -5,6 +5,15 @@ GPIO.cleanup() # Reset the high and low levels of the GPIO port
 GPIO.setwarnings(False) # Ignore some insignificant errors
 GPIO.setmode(GPIO.BCM)
 
+import Adafruit_PCA9685 #Import the library used to communicate with PCA9685
+import time
+import zero_servos as z
+
+pwm_steering = Adafruit_PCA9685.PCA9685() # Instantiate the object used to control the PWM
+pwm_steering.set_pwm_freq(50) # Set the frequency of the PWM signal
+
+z1,z2,z3 = z.zero_all()
+
 # There are three encoding methods for the GPIO port of the Raspberry Pi,
 # we choose BCM encoding to define the GPIO port
 
@@ -23,7 +32,7 @@ def motorStop():
   GPIO.output(Motor_EN, GPIO.LOW)
 
 def setup(): # GPIO initialization, GPIO motor cannot be controlled without initialization
-  global pwm
+  global pwm_motor
   GPIO.setwarnings(False)
   GPIO.setmode(GPIO.BCM)
   GPIO.setup(Motor_EN, GPIO.OUT)
@@ -32,7 +41,7 @@ def setup(): # GPIO initialization, GPIO motor cannot be controlled without init
   
   motorStop() # Avoid motor starting to rotate automatically after initialization
   try: # Try is used here to avoid errors due to repeated PWM settings
-    pwm = GPIO.PWM(Motor_EN, 1000)
+    pwm_motor = GPIO.PWM(Motor_EN, 1000)
   except:
     pass
 
@@ -40,20 +49,20 @@ def motor(direction, speed): # The function used to control the motor
   if direction == -1:
     GPIO.output(Motor_Pin1, GPIO.HIGH)
     GPIO.output(Motor_Pin2, GPIO.LOW)
-    pwm.start(100)
-    pwm.ChangeDutyCycle(speed)
+    pwm_motor.start(100)
+    pwm_motor.ChangeDutyCycle(speed)
 
   if direction == 1:
     GPIO.output(Motor_Pin1, GPIO.LOW)
     GPIO.output(Motor_Pin2, GPIO.HIGH)
-    pwm.start(100)
-    pwm.ChangeDutyCycle(speed)
+    pwm_motor.start(100)
+    pwm_motor.ChangeDutyCycle(speed)
 
 setup()
 
 def circle_fwd(speed,angle):
   # Control motor to rotate at full speed for 0.5 seconds
-  
+  pwm_steering.set_pwm(2, 0, angle)
   motor(1, speed)
   time.sleep(0.1)
 
