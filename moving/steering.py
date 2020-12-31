@@ -1,9 +1,11 @@
 import Adafruit_PCA9685 #Import the library used to communicate with PCA9685
 import time
-import zero_servos
+import zero_servos as z
 
 pwm = Adafruit_PCA9685.PCA9685() # Instantiate the object used to control the PWM
 pwm.set_pwm_freq(50) # Set the frequency of the PWM signal
+
+z.zero_all()
 
 while 1:
   for i in range(0,10): # Slowly move the servo from 300 to 400
