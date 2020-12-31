@@ -12,5 +12,5 @@ while 1:
     pwm.set_pwm(2, 0, (z2+(i*10)))
     time.sleep(0.05)
   for i in range(0,10): # Slowly move the servo from 400 to 300
-    pwm.set_pwm(2, 0, ((z2+100)-(i*10))
+    pwm.set_pwm(2, 0, ((z2+100)-(i*10)))
     time.sleep(0.05)
