@@ -64,7 +64,7 @@ def circle_fwd(speed,angle):
   # Control motor to rotate at full speed for 0.5 seconds
   pwm_steering.set_pwm(2, 0, angle)
   motor(1, speed)
-  time.sleep(0.1)
+  time.sleep(1)
 
   # Control motor to rotate in opposite directions at full speed for 0.5 seconds
 
@@ -74,5 +74,5 @@ def circle_fwd(speed,angle):
   # Stop the motor
   motorStop()
 
-circle_fwd(10,330)
+circle_fwd(30,330)
   
