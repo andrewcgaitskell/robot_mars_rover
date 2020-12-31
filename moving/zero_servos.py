@@ -22,7 +22,8 @@ def zero_all():
   pwm.set_pwm(0, 0, servo1_zero)
   pwm.set_pwm(1, 0, servo2_zero)
   pwm.set_pwm(2, 0, servo3_zero)
-
+  
+  return servo1_zero , servo2_zero, servo3_zero
 
 '''
 while 1:
