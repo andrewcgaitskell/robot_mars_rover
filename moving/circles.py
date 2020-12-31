@@ -60,11 +60,11 @@ def motor(direction, speed): # The function used to control the motor
 
 setup()
 
-def circle_fwd(time,speed,angle):
+def circle_fwd(time_in,speed_in,angle_in):
   # Control motor to rotate at full speed for 0.5 seconds
-  pwm_steering.set_pwm(2, 0, angle)
-  motor(1, speed)
-  time.sleep(time)
+  pwm_steering.set_pwm(2, 0, angle_in)
+  motor(1, speed_in)
+  time.sleep(time_in)
 
   # Control motor to rotate in opposite directions at full speed for 0.5 seconds
 
