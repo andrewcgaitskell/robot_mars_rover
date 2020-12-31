@@ -82,5 +82,7 @@ time.sleep(15)
 while 1:
   circle(5,90,80,1)
   circle(4.2,90,80,-1)
+  circle(5,90,-80,1)
+  circle(4.2,90,-80,-1)
   time.sleep(10)
   
