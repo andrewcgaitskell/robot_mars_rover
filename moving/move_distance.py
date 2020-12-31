@@ -1,4 +1,5 @@
 import time
+import zero_servos as z
 import RPi.GPIO as GPIO # Import the library used to control GPIO
 GPIO.cleanup() # Reset the high and low levels of the GPIO port
 GPIO.setwarnings(False) # Ignore some insignificant errors
@@ -92,6 +93,8 @@ def move5cm_back():
   # Stop the motor
 
   motorStop()
+
+z.zero_all
 
 for x in range(1,10):
   move5cm_fwd()
