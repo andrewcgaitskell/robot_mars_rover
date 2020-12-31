@@ -95,4 +95,6 @@ def move5cm_back():
 
 for x in range(1,10):
   move5cm_fwd()
+  time.sleep(1)
   move5cm_back()
+  time.sleep(1)
