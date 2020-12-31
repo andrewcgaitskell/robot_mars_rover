@@ -68,7 +68,7 @@ def move10cm_fwd():
 def move5cm_fwd():
   # Control motor to rotate at full speed for 0.5 seconds
   motor(1, 100)
-  time.sleep(0.05)
+  time.sleep(0.1)
 
   # Control motor to rotate in opposite directions at full speed for 0.5 seconds
 
@@ -79,4 +79,20 @@ def move5cm_fwd():
 
   motorStop()
 
-move5cm_fwd()
+def move5cm_back():
+  # Control motor to rotate at full speed for 0.5 seconds
+  motor(-1, 100)
+  time.sleep(0.1)
+
+  # Control motor to rotate in opposite directions at full speed for 0.5 seconds
+
+  #motor(-1, 50)
+  #time.sleep(0.1)
+
+  # Stop the motor
+
+  motorStop()
+
+for x in range(1,10):
+  move5cm_fwd()
+  move5cm_back()
