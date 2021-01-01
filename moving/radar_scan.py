@@ -8,11 +8,11 @@ pwm.set_pwm_freq(50) # Set the frequency of the PWM signal
 z0,z1,z2 = z.zero_all()
 
 while 1:
-  for i in range(0,6): # Slowly move the servo from 300 to 400
+  for i in range(-6,6): # Slowly move the servo from 300 to 400
     print(z1+(i*20))
     pwm.set_pwm(1, 0, (z1+(i*20)))
     time.sleep(0.1)
-  for i in range(0,6): # Slowly move the servo from 400 to 300
+  for i in range(-6,6): # Slowly move the servo from 400 to 300
     print((z1+120)-(i*20))
     pwm.set_pwm(1, 0, ((z1+120)-(i*20)))
     time.sleep(0.1)
