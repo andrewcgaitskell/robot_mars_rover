@@ -8,6 +8,11 @@ pwm.set_pwm_freq(50) # Set the frequency of the PWM signal
 z0,z1,z2 = z.zero_all()
 
 while 1:
+  read_angles = [-100, -50, 0 , 50, 100, 50, 0, -50]
+  for i in read_angles:
+    pwm.set_pwm(1, 0, (z1+i))
+    time.sleep(0.25)
+  '''
   for i in range(0,5):
     print(z1+(i*20))
     pwm.set_pwm(1, 0, (z1+(i*20)))
@@ -24,3 +29,4 @@ while 1:
     print((z1-100)-(i*20))
     pwm.set_pwm(1, 0, ((z1-100)+(i*20)))
     time.sleep(0.1)
+ '''
