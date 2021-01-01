@@ -11,7 +11,7 @@ while 1:
   read_angles = [-100, -50, 0 , 50, 100, 50, 0, -50]
   for i in read_angles:
     pwm.set_pwm(1, 0, (z1+i))
-    time.sleep(0.25)
+    time.sleep(0.5)
   '''
   for i in range(0,5):
     print(z1+(i*20))
