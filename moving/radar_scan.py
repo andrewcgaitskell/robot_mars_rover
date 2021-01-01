@@ -13,14 +13,14 @@ while 1:
     pwm.set_pwm(1, 0, (z1+(i*20)))
     time.sleep(0.1)
   for i in range(0,5):
-    print((z1+120)-(i*20))
+    print((z1+100)-(i*20))
     pwm.set_pwm(1, 0, ((z1+100)-(i*20)))
     time.sleep(0.1)
-  for i in range(0,-5):
+  for i in range(0,-5,-1):
     print(z1+(i*20))
     pwm.set_pwm(1, 0, (z1+(i*20)))
     time.sleep(0.1)
-  for i in range(0,-5):
-    print((z1+120)-(i*20))
-    pwm.set_pwm(1, 0, ((z1+100)-(i*20)))
+  for i in range(0,5):
+    print((z1-100)-(i*20))
+    pwm.set_pwm(1, 0, ((z1-100)+(i*20)))
     time.sleep(0.1)
