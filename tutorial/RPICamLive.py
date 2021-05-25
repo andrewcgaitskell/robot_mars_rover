@@ -7,6 +7,7 @@ import cv2
 import zmq
 import base64
 import picamera
+import numpy as np
 from picamera.array import PiRGBArray
 '''
 Here we need to fill in the IP address of the video receiver (the IP address of the PC) '''
