@@ -45,7 +45,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     '''
     
     frame_image = frame.array
-
+    
+  
     '''
     We encode the frame into stream data and save it in the memory buffer
     '''
@@ -57,7 +58,18 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     Here we send the stream data in the buffer through base64 encoding to the video receiving end
     '''
 
-    footage_socket.send(jpg_as_text)
+    ##cv2.imshow("Stream", source)
+    
+    cv2.imshow("Stream", buffer)
+    
+    '''
+    Generally, waitKey () should be used after imshow () to leave time for image drawing, otherwise the window will appear unresponsive and the image cannot be displayed
+    '''
+    cv2.waitKey(1)
+
+    
+    
+    ##footage_socket.send(jpg_as_text)
 
     '''
     Clear the stream in preparation for the next frame
