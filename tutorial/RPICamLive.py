@@ -54,13 +54,27 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
     encoded, buffer = cv2.imencode('.jpg', frame_image)
     jpg_as_text = base64.b64encode(buffer)
 
+    
+    img = base64.b64decode(jpg_as_text)
+
+    '''
+    Interpret a buffer as a 1-dimensional array
+    '''
+
+    npimg = np.frombuffer(img, dtype=np.uint8)
+
+    '''
+    Decode a one-dimensional array into an image
+    '''
+
+    source = cv2.imdecode(npimg, 1)
+    
     '''
     Here we send the stream data in the buffer through base64 encoding to the video receiving end
     '''
 
-    ##cv2.imshow("Stream", source)
+    cv2.imshow("Stream", source)
     
-    cv2.imshow("Stream", jpg_as_text)
     
     '''
     Generally, waitKey () should be used after imshow () to leave time for image drawing, otherwise the window will appear unresponsive and the image cannot be displayed
