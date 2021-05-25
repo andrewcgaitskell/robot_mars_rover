@@ -4,7 +4,8 @@ First import the required libraries
 
 import cv2
 import zmq
-import base64 import numpy as np
+import base64
+import numpy as np
 
 '''
 Here we instantiate the zmq object used to receive the frame
@@ -13,7 +14,8 @@ Note that the port number needs to be consistent with the sender's
 
 context = zmq.Context()
 
-footage_socket = context.socket(zmq.PAIR) footage_socket.bind('tcp://*:5555')
+footage_socket = context.socket(zmq.PAIR)
+footage_socket.bind('tcp://*:5555')
 
 while True:
 
