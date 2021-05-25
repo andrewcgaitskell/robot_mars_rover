@@ -60,7 +60,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
     ##cv2.imshow("Stream", source)
     
-    cv2.imshow("Stream", buffer)
+    cv2.imshow("Stream", jpg_as_text)
     
     '''
     Generally, waitKey () should be used after imshow () to leave time for image drawing, otherwise the window will appear unresponsive and the image cannot be displayed
