@@ -1,5 +1,7 @@
 //https://techtutorialsx.com/2018/03/09/esp32-arduino-getting-the-bluetooth-device-address/
 
+//B4:E6:2D:97:8B:0F
+
 #include "esp_bt_main.h"
 #include "esp_bt_device.h"
  
