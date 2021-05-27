@@ -8,7 +8,7 @@ Python sockets (with Python 3.3 or above).
 import socket
 
 serverMACAddress = 'B4:E6:2D:97:8B:0F'
-port = 1
+port = 1 # this was 3, it works as 1
 s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
 s.connect((serverMACAddress,port))
 while 1:
