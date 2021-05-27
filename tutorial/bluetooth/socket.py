@@ -1,5 +1,12 @@
 import socket
 
+import socket
+
+serverMACAddress = 'B4:E6:2D:97:8B:0F'
+port = 1 # this was 3, it works as 1
+s = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
+s.connect((serverMACAddress,port))
+
 class MySocket:
     """demonstration class only
       - coded for clarity, not efficiency
@@ -7,8 +14,9 @@ class MySocket:
 
     def __init__(self, sock=None):
         if sock is None:
-            self.sock = socket.socket(
-                            socket.AF_INET, socket.SOCK_STREAM)
+            #self.sock = socket.socket(
+            #                socket.AF_INET, socket.SOCK_STREAM)
+            self.sock = socket.socket(socket.AF_BLUETOOTH, socket.SOCK_STREAM, socket.BTPROTO_RFCOMM)
         else:
             self.sock = sock
 
