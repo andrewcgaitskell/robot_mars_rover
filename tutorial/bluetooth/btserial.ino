@@ -2,11 +2,9 @@
 //https://arduino-er.blogspot.com/2020/12/esp-32s-as-bluetooth-classic-server-bi.html
 
 // ref: Examples > BluetoothSerial > SerialToSerialBT
-//with SPI ST735 80x160 IPS Display
 
 #include "BluetoothSerial.h"
 #include "esp_bt_device.h"
-#include <TFT_eSPI.h> // TFT library
 #include <SPI.h>
 
 #if !defined(CONFIG_BT_ENABLED) || !defined(CONFIG_BLUEDROID_ENABLED)
@@ -14,8 +12,6 @@
 #endif
 
 BluetoothSerial SerialBT;
-
-TFT_eSPI tft = TFT_eSPI();
 
 const String deviceName = "ESP32_SPP";
 
@@ -43,51 +39,42 @@ BluetoothSerial/src/BluetoothSerial.cpp
 
 void btCallback(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
 
-  //tft.fillScreen(TFT_BLACK);
-  //tft.setCursor(0, 0, 2);
-  //tft.setTextSize(1);
   
   switch (event)
     {
     case ESP_SPP_INIT_EVT:
         Serial.println("ESP_SPP_INIT_EVT");
-        //tft.println("ESP_SPP_INIT_EVT");
+        
         break;
 
     case ESP_SPP_SRV_OPEN_EVT://Server connection open
         Serial.println("ESP_SPP_SRV_OPEN_EVT");
-        //tft.println("ESP_SPP_SRV_OPEN_EVT");
+        
 
-        tft.fillScreen(TFT_BLACK);
-        tft.setCursor(0, 0, 1);
-        tft.setTextSize(1);
         break;
 
     case ESP_SPP_CLOSE_EVT://Client connection closed
         Serial.println("ESP_SPP_CLOSE_EVT");
-        //tft.println("ESP_SPP_CLOSE_EVT");
+       
 
-        startUpScr();
         break;
 
     case ESP_SPP_CONG_EVT://connection congestion status changed
         Serial.println("ESP_SPP_CONG_EVT");
-        //tft.println("ESP_SPP_CONG_EVT");
         break;
 
     case ESP_SPP_WRITE_EVT://write operation completed
         Serial.println("ESP_SPP_WRITE_EVT");
-        //tft.println("ESP_SPP_WRITE_EVT");
         break;
 
     case ESP_SPP_DATA_IND_EVT://connection received data
         Serial.println("ESP_SPP_DATA_IND_EVT");
-        //tft.println("ESP_SPP_DATA_IND_EVT");
+        
         break;
 
     case ESP_SPP_DISCOVERY_COMP_EVT://discovery complete
         Serial.println("ESP_SPP_DISCOVERY_COMP_EVT");
-        //tft.println("ESP_SPP_DISCOVERY_COMP_EVT");
+       
         break;
 
     case ESP_SPP_OPEN_EVT://Client connection open
@@ -102,26 +89,16 @@ void btCallback(esp_spp_cb_event_t event, esp_spp_cb_param_t *param){
 
     case ESP_SPP_CL_INIT_EVT://client initiated a connection
         Serial.println("ESP_SPP_CL_INIT_EVT");
-        //tft.println("ESP_SPP_CL_INIT_EVT");
+       
         break;
 
     default:
         Serial.println("unknown event!");
-        //tft.println("unknown event!");
+       
         break;
     }
 }
 
-void startUpScr(){
-  tft.fillScreen(TFT_BLACK);
-  tft.setCursor(0, 0, 2);
-  tft.setTextSize(1);
-  tft.println("arduino-er.blogspot.com");
-  tft.println(deviceName);
-  tft.setTextFont(1);
-  tft.setTextSize(2);
-  tft.println(getMAC());
-}
 
 void setup() {
   Serial.begin(115200);
@@ -135,9 +112,6 @@ void setup() {
   Serial.println();
   SerialBT.register_callback(btCallback);
 
-  tft.init();
-  tft.setRotation(3);
-  startUpScr();
 
 }
 
@@ -149,11 +123,6 @@ void loop() {
     char c = SerialBT.read();
     SerialBT.write(c);
     String s = String(c);
-    if(tft.getCursorY() >= 80){
-      tft.setCursor(0, 0);
-      tft.fillScreen(TFT_BLACK);
-    }
-    tft.print(s);
   }
   delay(20);
 }
