@@ -17,5 +17,6 @@ podman run -dt \
 --privileged \
 --name container_flask_frontend_1 \
 --user $uid:$gid \
+--v /dev/mem:/dev/mem
 -p 0.0.0.0:5000:5000  \
 localhost/image_python_frontend_1:latest
