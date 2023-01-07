@@ -18,3 +18,9 @@ https://www.raspberrypi.com/software/operating-systems/
 https://docs.podman.io/en/latest/markdown/podman-import.1.html
 
 https://docs.oracle.com/en/learn/intro_podman/index.html#run-the-oracle-linux-8-slim-image
+
+
+Pi is stuck on storing signatures
+
+https://github.com/containers/podman/issues/3323
+
