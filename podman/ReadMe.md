@@ -23,6 +23,11 @@ trying
 
 podman import --change CMD=/bin/bash --change ENTRYPOINT=/bin/sh 2022-09-22-raspios-bullseye-arm64-lite.img.xz
 
+alternatives
+
+https://bleepcoder.com/podman/516849778/podman-import-from-a-tarball-doesn-t-preserve-metadata
+
+
 Pi is stuck on storing signatures
 
 https://github.com/containers/podman/issues/3323
