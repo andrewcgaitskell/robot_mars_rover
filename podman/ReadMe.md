@@ -27,3 +27,7 @@ Pi is stuck on storing signatures
 
 https://github.com/containers/podman/issues/3323
 
+hope to upload image to docker.io
+
+https://stackoverflow.com/questions/55322347/docker-how-to-get-docker-image-to-github
+
