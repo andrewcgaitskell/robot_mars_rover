@@ -1,7 +1,7 @@
 podman stop container_flask_frontend_1
 podman pod stop pod_flask_frontend
 podman pod rm pod_flask_frontend
-podman rmi image_flask_frontend_1
+podman rmi image_python_frontend_1
 
 uid=1000
 gid=1000
@@ -30,4 +30,4 @@ podman run -dt \
 --name container_flask_frontend_1 \
 --pod pod_flask_frontend \
 --user $uid:$gid \
-localhost/image_flask_frontend_1:latest
+localhost/image_python_frontend_1:latest
