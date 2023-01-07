@@ -1,6 +1,5 @@
 podman stop container_flask_frontend_1
-podman pod stop pod_flask_frontend
-podman pod rm pod_flask_frontend
+podman container rm container_flask_frontend_1
 podman rmi image_python_frontend_1
 
 uid=1000
