@@ -12,7 +12,7 @@ subgidSize=$(( $(podman info --format "{{ range \
 
 podman pod create \
 --name pod_flask_frontend \
---infra-name infra_flask_frontend \
+--infra infra_flask_frontend \
 --network bridge \
 --uidmap 0:1:$uid \
 --uidmap $uid:0:1 \
