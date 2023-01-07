@@ -19,6 +19,9 @@ https://docs.podman.io/en/latest/markdown/podman-import.1.html
 
 https://docs.oracle.com/en/learn/intro_podman/index.html#run-the-oracle-linux-8-slim-image
 
+trying
+
+podman import --change CMD=/bin/bash --change ENTRYPOINT=/bin/sh 2022-09-22-raspios-bullseye-arm64-lite.img.xz
 
 Pi is stuck on storing signatures
 
