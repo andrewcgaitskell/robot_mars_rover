@@ -17,5 +17,5 @@ podman build -f Dockerfile -t image_python_frontend_1 .
 podman run -dt \
 --name container_flask_frontend_1 \
 --user $uid:$gid \
---publish 5050:5050
+--publish 5050:5050  \
 localhost/image_python_frontend_1:latest
