@@ -10,6 +10,14 @@ We should be able to create a raspian image that is run within the host and it w
 
 https://docs.docker.com/engine/install/ubuntu/
 
+## Get Raspian Image
+
+wget https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2022-09-26/2022-09-22-raspios-bullseye-armhf.img.xz
+
+## Unzip Raspian Image
+
+unxz 2022-09-22-raspios-bullseye-armhf.img.xz 
+
 ## VM Experiences
 
 Boot disk was too small - will recreate at 50 GB
