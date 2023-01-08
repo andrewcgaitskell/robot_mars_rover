@@ -4,6 +4,26 @@ Really do not like having to run led control as root.
 
 We should be able to create a raspian image that is run within the host and it will have access to just the GPIO.
 
+# Created VM
+
+Boot disk was too small - will recreate at 50 GB
+
+Mounting New Disk on VM
+
+https://cloud.google.com/compute/docs/disks/add-persistent-disk
+
+https://devopscube.com/mount-extra-disks-on-google-cloud/
+
+Easier approach to extracting the root filesystem and not the boot system
+
+https://www.computerhope.com/unix/losetup.htm
+
+Very straightforward way of creating a Docker image
+
+https://www.boulderes.com/resource-library/building-raspberry-pi-disk-images-with-docker-a-case-study-in-software-automation
+
+
+
 
 Links found
 
