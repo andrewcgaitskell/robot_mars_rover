@@ -6,9 +6,15 @@ We should be able to create a raspian image that is run within the host and it w
 
 # Created VM
 
+## Install Docker
+
+https://docs.docker.com/engine/install/ubuntu/
+
+## VM Experiences
+
 Boot disk was too small - will recreate at 50 GB
 
-Mounting New Disk on VM
+## Mounting New Disk on VM
 
 https://cloud.google.com/compute/docs/disks/add-persistent-disk
 
