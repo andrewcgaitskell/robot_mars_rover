@@ -18,6 +18,12 @@ sudo sh get-docker.sh
 
 wget https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2022-09-26/2022-09-22-raspios-bullseye-armhf.img.xz
 
+above is too big for pi
+
+try to download the root file from this location
+
+https://downloads.raspberrypi.org/raspbian_lite/
+
 ## Unzip Raspian Image
 
 unxz 2022-09-22-raspios-bullseye-armhf.img.xz 
