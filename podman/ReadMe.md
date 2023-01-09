@@ -4,9 +4,9 @@ Really do not like having to run led control as root.
 
 We should be able to create a raspian image that is run within the host and it will have access to just the GPIO.
 
-# Created VM
+# Created a Pi with a Lite Image
 
-## Install Docker
+## Installed Docker
 
 https://docs.docker.com/engine/install/ubuntu/
 
@@ -16,15 +16,9 @@ sudo sh get-docker.sh
 
 ## Get Raspian Image
 
-wget https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2022-09-26/2022-09-22-raspios-bullseye-armhf.img.xz
-
-above is too big for pi
-
 try to download the root file from this location
 
-https://downloads.raspberrypi.org/raspbian_lite/
-
-https://downloads.raspberrypi.org/raspbian_lite/root.tar.xz
+wget https://downloads.raspberrypi.org/raspbian_lite/root.tar.xz
 
 ## Unzip Raspian Image
 
@@ -41,7 +35,28 @@ Very straightforward way of creating a Docker image
 
 https://www.boulderes.com/resource-library/building-raspberry-pi-disk-images-with-docker-a-case-study-in-software-automation
 
+# Create Dockerfile
 
+nano Dockerfile
+
+from scratch
+user root
+add root.tar /
+CMD ["/bin/bash"]
+
+
+# Create Image
+
+docker build -t raspi-base .
+
+# Create and Run Container
+
+docker run --rm -ti raspi-base:latest
+
+# Inside Container
+
+apt update
+apt upgrade
 
 
 Links found
