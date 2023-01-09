@@ -20,9 +20,11 @@ try to download the root file from this location
 
 wget https://downloads.raspberrypi.org/raspbian_lite/root.tar.xz
 
-## Unzip Raspian Image
+may try:
 
-unxz 2022-09-22-raspios-bullseye-armhf.img.xz 
+https://downloads.raspberrypi.org/raspios_lite_arm64/
+
+## Unzip Raspian Image
 
 unxz root.tar.xz
 
@@ -49,17 +51,41 @@ CMD ["/bin/bash"]
 
 docker build -t raspi-base .
 
-# Create and Run Container
+# Run Container
 
-docker run --rm -ti raspi-base:latest
+docker run --name mycontainer -d -i -t alpine /bin/sh
+
+docker run --name mypicont -d -i -t raspi-base:latest /bin/sh
+
+# Connect to Container
+
+docker exec -it mycontainer sh
+
+docker exec -it mypicont sh
+
 
 # Inside Container
 
 apt update
 apt upgrade
 
+# Exit container
 
-Links found
+exit
+
+# List Containers
+
+docker ps
+
+find container id
+
+copy and paste into command below
+
+# Commit changes
+
+docker commit c2bb6383ff6e raspi-base:v1
+
+# Links found
 
 https://stackoverflow.com/questions/67838895/docker-access-to-raspberry-pi-gpio-pins-privileged-does-not-work
 
