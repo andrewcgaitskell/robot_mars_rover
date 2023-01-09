@@ -24,23 +24,14 @@ try to download the root file from this location
 
 https://downloads.raspberrypi.org/raspbian_lite/
 
+https://downloads.raspberrypi.org/raspbian_lite/root.tar.xz
+
 ## Unzip Raspian Image
 
 unxz 2022-09-22-raspios-bullseye-armhf.img.xz 
 
-## VM Experiences
+unxz root.tar.xz
 
-Boot disk was too small - will recreate at 50 GB
-
-## VM on GCP are wrong architecture
-
-https://devopstales.github.io/linux/running_and_building_multi_arch_containers/
-
-## Mounting New Disk on VM
-
-https://cloud.google.com/compute/docs/disks/add-persistent-disk
-
-https://devopscube.com/mount-extra-disks-on-google-cloud/
 
 Easier approach to extracting the root filesystem and not the boot system
 
