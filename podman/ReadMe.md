@@ -41,10 +41,10 @@ https://www.boulderes.com/resource-library/building-raspberry-pi-disk-images-wit
 
 nano Dockerfile
 
-from scratch
-user root
-add root.tar /
-CMD ["/bin/bash"]
+      from scratch
+      user root
+      add root.tar /
+      CMD ["/bin/bash"]
 
 
 # Create Image
