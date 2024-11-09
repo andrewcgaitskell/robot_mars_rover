@@ -11,7 +11,8 @@ pwm = PCA9685(i2c)
 pwm.frequency = 50  # Set the frequency to 50 Hz
 
 # Port number is set to 2 (corrected from 3)
-servo_channel = 2
+## servo_channel = 2 ### steering
+servo_channel = 3 ## camera
 
 try:
     while True:
