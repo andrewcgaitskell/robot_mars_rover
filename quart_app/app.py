@@ -1,7 +1,7 @@
 import random
 import asyncio
 from quart import Quart, render_template, jsonify
-from .blueprints.line_following import line_following_bp
+from quart_app.blueprints.line_following import line_following_bp
 
 app = Quart(__name__, templates_folder="templates")
 
