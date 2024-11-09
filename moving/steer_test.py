@@ -2,7 +2,7 @@ import time
 import RPi.GPIO as GPIO
 
 # Servo configuration
-SERVO_PIN = 18  # GPIO pin connected to the servo (BCM numbering)
+SERVO_PIN = 24  # GPIO pin connected to the servo (BCM numbering)
 FREQUENCY = 50  # Servo control frequency (50 Hz)
 
 # Define the straight-ahead angle (adjust this as needed)
