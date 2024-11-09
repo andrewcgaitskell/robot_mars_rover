@@ -10,9 +10,9 @@ i2c = busio.I2C(board.SCL, board.SDA)
 pwm = PCA9685(i2c)
 pwm.frequency = 50  # Set the frequency to 50 Hz
 
-# Port number is set to 2 (corrected from 3)
 ## servo_channel = 2 ### steering
-servo_channel = 1 ## camera
+## servo_channel = 1 ## camera side to side
+servo_channel = 3
 
 try:
     while True:
