@@ -1,4 +1,27 @@
 import time
+from rpi_ws281x import PixelStrip, Color
+
+# LED strip configuration:
+LED_COUNT = 12          # Number of LED pixels.
+LED_PIN = 12            # GPIO pin connected to the pixels (18 uses PWM!).
+LED_FREQ_HZ = 800000    # LED signal frequency in hertz (usually 800kHz)
+LED_DMA = 10            # DMA channel to use for generating signal (try 10)
+LED_BRIGHTNESS = 255    # Set to 0 for darkest and 255 for brightest
+LED_INVERT = False      # True to invert the signal (when using NPN transistor level shift)
+LED_CHANNEL = 0         # Set to '1' for GPIOs 13, 19, 41, 45 or 53
+
+# Create PixelStrip object with the specified configuration
+strip = PixelStrip(LED_COUNT, LED_PIN, LED_FREQ_HZ, LED_DMA, LED_INVERT, LED_BRIGHTNESS, LED_CHANNEL)
+strip.begin()
+
+# Function to turn off all LEDs
+def turn_off_all_leds():
+    for i in range(LED_COUNT):
+        strip.setPixelColor(i, Color(0, 0, 0))  # Set each pixel to black (off)
+    strip.show()  # Update the LED strip
+
+
+import time
 import RPi.GPIO as GPIO
 
 # Define GPIO pins
@@ -94,6 +117,8 @@ def move5cm_back():
 
 # Main setup and loop
 setup()
+print("Turning off all LEDs...")
+turn_off_all_leds()
 
 try:
     for x in range(1, 10):
