@@ -36,6 +36,7 @@ try:
             time.sleep(0.05)
 
 except KeyboardInterrupt:
+    pwm.channels[servo_channel].duty_cycle = (300) * 16
     print("Stopping...")
 
 finally:
