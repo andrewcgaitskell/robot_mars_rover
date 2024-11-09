@@ -1,32 +1,49 @@
 import time
-import board
-import busio
-from adafruit_pca9685 import PCA9685
+import RPi.GPIO as GPIO
 
-# Initialize I2C bus
-i2c = busio.I2C(board.SCL, board.SDA)
+# Servo configuration
+SERVO_PIN = 18  # GPIO pin connected to the servo (BCM numbering)
+FREQUENCY = 50  # Servo control frequency (50 Hz)
 
-# Create PCA9685 object
-pwm = PCA9685(i2c)
-pwm.frequency = 50  # Set the frequency to 50 Hz
+# Define the straight-ahead angle (adjust this as needed)
+STRAIGHT_AHEAD_ANGLE = 85  # Adjust based on your specific servo calibration
 
-# Port number is set to 2 (corrected from 3)
-servo_channel = 2
+# Setup GPIO
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(SERVO_PIN, GPIO.OUT)
 
+# Initialize PWM on the servo pin
+pwm = GPIO.PWM(SERVO_PIN, FREQUENCY)
+pwm.start(0)
+
+# Helper function to set the servo angle
+def set_servo_angle(angle):
+    # Convert angle (0-180) to duty cycle (2-12%)
+    duty_cycle = 2 + (angle / 18)
+    pwm.ChangeDutyCycle(duty_cycle)
 
 try:
     while True:
-        # Slowly move the servo from 300 to 400
-        for i in range(0, 100):
-            pwm.channels[servo_channel].duty_cycle = (300 + i) * 16  # Scale to 16-bit value
+        # Slowly move the servo from 0° to 180°
+        for angle in range(0, 181, 1):
+            set_servo_angle(angle)
             time.sleep(0.05)
 
-        # Slowly move the servo from 400 to 300
-        for i in range(0, 100):
-            pwm.channels[servo_channel].duty_cycle = (400 - i) * 16  # Scale to 16-bit value
+        # Slowly move the servo from 180° back to 0°
+        for angle in range(180, -1, -1):
+            set_servo_angle(angle)
             time.sleep(0.05)
 
 except KeyboardInterrupt:
     print("Stopping...")
+
 finally:
-    pwm.deinit()  # Clean up the PCA9685
+    # Set the servo to the straight-ahead position
+    print(f"Setting servo to straight-ahead position ({STRAIGHT_AHEAD_ANGLE}°)")
+    set_servo_angle(STRAIGHT_AHEAD_ANGLE)
+    time.sleep(1)  # Give time for the servo to move
+
+    # Clean up
+    pwm.ChangeDutyCycle(0)
+    pwm.stop()
+    GPIO.cleanup()
