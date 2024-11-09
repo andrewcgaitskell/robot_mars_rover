@@ -3,7 +3,7 @@ import asyncio
 from quart import Quart, render_template, jsonify
 from blueprints.line_following import line_following_bp
 
-app = Quart(__name__, templates_folder="templates")
+app = Quart(__name__, template_folder="templates")
 
 # Register the sensor blueprint
 app.register_blueprint(line_following_bp, url_prefix='/line')
