@@ -25,6 +25,16 @@ try:
             pwm.channels[servo_channel].duty_cycle = (400 - i) * 16  # Scale to 16-bit value
             time.sleep(0.05)
 
+        # Slowly move the servo from 300 to 200
+        for i in range(0, 100):
+            pwm.channels[servo_channel].duty_cycle = (300 - i) * 16  # Scale to 16-bit value
+            time.sleep(0.05)
+        
+        # Slowly move the servo from 200 to 300
+        for i in range(0, 100):
+            pwm.channels[servo_channel].duty_cycle = (200 + i) * 16  # Scale to 16-bit value
+            time.sleep(0.05)
+
 except KeyboardInterrupt:
     print("Stopping...")
 
