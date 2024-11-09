@@ -50,6 +50,6 @@ async def fn_line_data():
     return jsonify({"value": sensor_value})
 
 # Route to render the Jinja2 template with the chart
-@sensor_bp.route('/show_line_data')
+@line_following_bp.route('/show_line_data')
 async def fn_show_line_data():
     return await render_template('sensor_data.html')
