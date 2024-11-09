@@ -68,20 +68,36 @@ def motorStop():
     GPIO.output(Motor_Pin2, GPIO.LOW)
     pwm_motor.ChangeDutyCycle(0)
 
-# Control the motor direction and speed
 def motor(direction, speed):
     # Speed should be between 0 and 100
     speed = max(0, min(speed, 100))
 
+    # Quick start parameters
+    kick_start_duration = 0.05  # Duration of the kick-start (in seconds)
+    kick_start_speed = 100      # Speed for the quick start (maximum power)
+
     if direction == -1:  # Reverse
         GPIO.output(Motor_Pin1, GPIO.HIGH)
         GPIO.output(Motor_Pin2, GPIO.LOW)
+        
+        # Apply a quick burst of full speed
+        pwm_motor.ChangeDutyCycle(kick_start_speed)
+        time.sleep(kick_start_duration)
+
+        # Set to desired speed
         pwm_motor.ChangeDutyCycle(speed)
 
     elif direction == 1:  # Forward
         GPIO.output(Motor_Pin1, GPIO.LOW)
         GPIO.output(Motor_Pin2, GPIO.HIGH)
+
+        # Apply a quick burst of full speed
+        pwm_motor.ChangeDutyCycle(kick_start_speed)
+        time.sleep(kick_start_duration)
+
+        # Set to desired speed
         pwm_motor.ChangeDutyCycle(speed)
+
 
 # Zero all servos
 def zero_all():
