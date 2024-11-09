@@ -12,7 +12,7 @@ pwm.frequency = 50  # Set the frequency to 50 Hz
 
 # Port number is set to 2 (corrected from 3)
 ## servo_channel = 2 ### steering
-servo_channel = 3 ## camera
+servo_channel = 1 ## camera
 
 try:
     while True:
