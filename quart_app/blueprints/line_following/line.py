@@ -1,9 +1,9 @@
-import RPi.GPIO as GPIO
-from IPython.display import display, clear_output
-import IPython
-import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
+import random
 import time
+import RPi.GPIO as GPIO
+from quart import Blueprint, jsonify, render_template
+
+line_following_bp = Blueprint('line_following_bp', __name__, template_folder='templates')
 
 # Sensor pins
 line_pin_right = 19
@@ -40,9 +40,16 @@ def get_sensor_value():
     else:
         return -3  # Undefined state
 
-# Setup GPIO
+# Initialize GPIO
 setup()
 
+# API endpoint to provide sensor data
+@line_following_bp.route('/line_data')
+async def fn_line_data():
+    sensor_value = get_sensor_value()
+    return jsonify({"value": sensor_value})
 
-
-      
+# Route to render the Jinja2 template with the chart
+@sensor_bp.route('/show_line_data')
+async def fn_show_line_data():
+    return await render_template('sensor_data.html')
