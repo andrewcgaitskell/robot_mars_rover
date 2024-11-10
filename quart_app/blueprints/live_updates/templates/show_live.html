@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Data with WebSocket</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        #chartContainer {
+            width: 80%;
+            max-width: 600px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Real-Time Data Chart</h1>
+<div id="chartContainer">
+    <canvas id="liveChart"></canvas>
+</div>
+
+<script>
+    const ctx = document.getElementById('liveChart').getContext('2d');
+
+    // Initialize Chart.js
+    const liveChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [], // Time labels
+            datasets: [
+                {
+                    label: 'Temperature (°C)',
+                    data: [],
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 2,
+                    fill: false,
+                },
+                {
+                    label: 'Humidity (%)',
+                    data: [],
+                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderWidth: 2,
+                    fill: false,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'second'
+                    },
+                    title: {
+                        display: true,
+                        text: 'Time'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Value'
+                    }
+                }
+            }
+        }
+    });
+
+    // Establish WebSocket connection
+    const socket = new WebSocket(`ws://${window.location.host}/ws/data`);
+
+    socket.onopen = () => {
+        console.log("WebSocket connection opened");
+    };
+
+    socket.onmessage = (event) => {
+        const data = JSON.parse(event.data);
+        const currentTime = new Date().toLocaleTimeString();
+
+        // Update the chart with new data
+        if (liveChart.data.labels.length > 20) {
+            liveChart.data.labels.shift();
+            liveChart.data.datasets[0].data.shift();
+            liveChart.data.datasets[1].data.shift();
+        }
+
+        liveChart.data.labels.push(currentTime);
+        liveChart.data.datasets[0].data.push(data.temperature);
+        liveChart.data.datasets[1].data.push(data.humidity);
+
+        liveChart.update();
+    };
+
+    socket.onclose = () => {
+        console.log("WebSocket connection closed");
+    };
+
+    socket.onerror = (error) => {
+        console.error("WebSocket error:", error);
+    };
+</script>
+
+</body>
+</html>
